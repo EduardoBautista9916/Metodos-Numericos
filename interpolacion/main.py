@@ -16,7 +16,7 @@ def menu_interpolacion():
     if  option != 1 and option != 2:
         print("opcion no valida")
     def interpolacion():
-        ordenamiento()
+        puntos = ordenamiento(puntos)
         fun_interpolacion()
     def ajuste_curvas():
         print("opcion fuera de servio")
@@ -82,11 +82,11 @@ def agregar_puntos(repeticiones):
         y = val_num()
         puntos.append([x,y])
 
-def ordenamiento():
+def ordenamiento(punto):
     izquierda =[]
     derecha = []
     centro = []
-    if len(puntos) > 1:
+    if len(punto) > 1:
         pivote = puntos[0][0]
         for i in puntos:
             if i[0] < pivote:
@@ -95,4 +95,7 @@ def ordenamiento():
                 centro.append(i[0])
             elif i > pivote:
                 derecha.append(i[0])
+            return ordenamiento(izquierda) + centro + ordenamiento(derecha)
+    else:
+        return punto
 fun_tabla()
