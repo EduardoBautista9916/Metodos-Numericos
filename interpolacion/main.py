@@ -95,4 +95,5 @@ def ordenamiento():
                 centro.append(i[0])
             elif i > pivote:
                 derecha.append(i[0])
+            #Este es un comentario
 fun_tabla()
