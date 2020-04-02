@@ -95,11 +95,7 @@ def ordenamiento(punto):
                 centro.append(i[0])
             elif i > pivote:
                 derecha.append(i[0])
-<<<<<<< HEAD
             return ordenamiento(izquierda) + centro + ordenamiento(derecha)
     else:
         return punto
-=======
-            #Este es un comentario
->>>>>>> 60c83bf1b7cbfb183f1d6b52589ba3f6fdd3ef78
 fun_tabla()
