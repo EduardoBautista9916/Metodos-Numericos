@@ -16,9 +16,9 @@ def menu_interpolacion():
     if  option != 1 and option != 2:
         print("opcion no valida")
     def interpolacion():
-        auxiliar = ordenamiento(puntos)
-        print(auxiliar)
-        fun_interpolacion()
+        punto = ordenamiento(puntos)
+        print(punto)
+        fun_interpolacion(punto)
     def ajuste_curvas():
         print("opcion fuera de servio")
     dict = {
@@ -60,19 +60,34 @@ def correccion():
     if repetir == 1:
         correccion()
 
-def fun_interpolacion():
+def fun_interpolacion(punto):
     while True:
         print("digita el numero a interpolar")
         num_inter = val_num()
-        if num_inter < puntos[0][0] or num_inter > puntos[len(puntos)-1][0]:
+        if num_inter < punto[0][0] or num_inter > punto[len(puntos)-1][0]:
             print("valor a interpolar fuera de rrango")
         else:
-            aux+=1
+            break
     print("digita el grado de el polinomio que se requiere")
-    grado = val_num()
-    if len(puntos) -2 < grado :
-        print("se requieren "+ grado + "puntos mas")
-        agregar_puntos(grado) # hay que cambiar grado no es el bueno 
+    while True:
+        grado = val_num()
+        if len(puntos) -1 < grado :
+            print("se requieren "+ grado + "+1 puntos.\n Ingrese otro Grado\>")
+        else:
+            break
+    tabla_dif=[]
+    con=1
+    for i in range(len(punto),1,-1):
+        aux=[]
+        for j in range(0,i):
+            val=(punto[j+con][1]-punto[j][1])/(punto[j+con][0]-punto[j][0])
+            print(val)
+            aux.append(val)
+        tabla_dif.append(aux)
+        aux=[]
+        con+=1
+    print(tabla_dif)
+
 
 def agregar_puntos(repeticiones):
     for i in range(1,repeticiones):
