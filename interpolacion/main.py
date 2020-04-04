@@ -2,13 +2,15 @@
 #sys.path.append("..")
 #from Newton_Rapshon.main import val_num
 puntos = []
+# funcion que valida que sea un numero la entrada
 def val_num():
     try:
         digit= float(input(">"))
     except(ValueError):
-        print("VALOR NO VALIDO", end="")
+        print("VALOR NO VALIDO")
         digit=val_num()
     return digit
+# aqui se selecciona la opcion a realizar
 def menu_interpolacion():
     print("digita 1 para usar interpolacion")
     print("digita 2 para usar ajuste de curvas")
@@ -21,12 +23,14 @@ def menu_interpolacion():
         fun_interpolacion(punto)
     def ajuste_curvas():
         print("opcion fuera de servio")
+        menu_interpolacion()
     dict = {
         1 : interpolacion,
         2 : ajuste_curvas
     }
     dict.get(option,menu_interpolacion)()
     
+# funcion que obtiene los datos de la tabla  
 def fun_tabla():
     while True :
         print("da el valorpara x")
@@ -44,9 +48,9 @@ def fun_tabla():
     correcto = val_num()
     if correcto == 1:
         correccion()
-    print(len(puntos))
     menu_interpolacion()
-    
+
+# corrige algun punto mal capturado    
 def correccion():
     print("el numero de columna acorregir")
     col_corregir = int(val_num())
@@ -60,6 +64,7 @@ def correccion():
     if repetir == 1:
         correccion()
 
+# comienza el metodo de interpolacion por diferencias divididas 
 def fun_interpolacion(punto):
     while True:
         print("digita el numero a interpolar")
@@ -72,11 +77,22 @@ def fun_interpolacion(punto):
     while True:
         grado = val_num()
         if len(puntos) -1 < grado :
-            print("se requieren "+ grado + "+1 puntos.\n Ingrese otro Grado\>")
+            print("se requieren ",grado , "+1 puntos.\n Ingrese otro Grado\>")
         else:
             break
     tabla=diferencias(punto)
-    #Este es un comentario de Prueba
+    for i in tabla:
+        print(i)
+    resultado = punto [0][1]
+    
+    for i in range(0,int(grado)):
+        aux = tabla[i][0]
+        for j in range(0,i+1):
+            aux *= (num_inter - punto[j][0])
+            print(aux)
+        resultado += aux
+        #print(resultado)
+    print (resultado)
 
 def diferencias(punto):
     con=1
