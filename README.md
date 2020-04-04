@@ -8,7 +8,7 @@ Repositorio para alojar las carpetas de los programas parciales y Paquete Final 
 
 ## Autores
 
-* **Alvares Cortes Kevin Alejandro**
-* **Bautista Gaona Luis Eduardo**
-* **De la Peña Estrada Valerie Samantha**
-* **Ortiz Flores Diana Michelle**
+* **Alvares Cortes Kevin Alejandro**(https://github.com/kevinalex113)
+* **Bautista Gaona Luis Eduardo**(https://github.com/EduardoBautista9916)
+* **De la Peña Estrada Valerie Samantha**(https://github.com/Valeriedp)
+* **Ortiz Flores Diana Michelle**(https://github.com/DianaM101)
