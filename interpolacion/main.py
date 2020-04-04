@@ -75,18 +75,24 @@ def fun_interpolacion(punto):
             print("se requieren "+ grado + "+1 puntos.\n Ingrese otro Grado\>")
         else:
             break
-    tabla_dif=[]
     con=1
-    for i in range(len(punto),1,-1):
-        aux=[]
-        for j in range(0,i):
-            val=(punto[j+con][1]-punto[j][1])/(punto[j+con][0]-punto[j][0])
-            print(val)
-            aux.append(val)
-        tabla_dif.append(aux)
-        aux=[]
+    tabla=[]
+    auxiliar=[]
+    for i in range(0,len(punto)-1):
+        val=(punto[i+1][1]-punto[i][1])/(punto[i+1][0]-punto[i][0])
+        auxiliar.append(val)
+    tabla.append(auxiliar)
+    auxiliar=[]
+    con+=1
+    for i in range(len(punto)-1,1,-1):
+        for j in range(0,(i-1)):
+            val=(tabla[con-2][j+1]-tabla[con-2][j])/(punto[j+con][0]-punto[j][0])
+            auxiliar.append(val)
+            #print(tabla[j-1][con-2])
+        tabla.append(auxiliar)
+        auxiliar=[]
         con+=1
-    print(tabla_dif)
+    print(tabla)
 
 
 def agregar_puntos(repeticiones):
@@ -113,4 +119,5 @@ def ordenamiento(punto):
         return ordenamiento(izquierda) + centro + ordenamiento(derecha)
     else:
         return punto
+
 fun_tabla()
