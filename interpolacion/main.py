@@ -16,8 +16,9 @@ def menu_interpolacion():
     if  option != 1 and option != 2:
         print("opcion no valida")
     def interpolacion():
-        puntos = ordenamiento(puntos)
-        fun_interpolacion()
+        punto = ordenamiento(puntos)
+        print(punto)
+        fun_interpolacion(punto)
     def ajuste_curvas():
         print("opcion fuera de servio")
     dict = {
@@ -59,20 +60,40 @@ def correccion():
     if repetir == 1:
         correccion()
 
-def fun_interpolacion():
-    aux = 0
-    while aux == 0:
+def fun_interpolacion(punto):
+    while True:
         print("digita el numero a interpolar")
         num_inter = val_num()
-        if num_inter < puntos[0][0] or num_inter > puntos[len(puntos)-1][0]:
+        if num_inter < punto[0][0] or num_inter > punto[len(puntos)-1][0]:
             print("valor a interpolar fuera de rrango")
         else:
-            aux+=1
+            break
     print("digita el grado de el polinomio que se requiere")
-    grado = val_num()
-    if len(puntos) -2 < grado :
-        print("se requieren "+ grado + "puntos mas")
-        agregar_puntos(grado) # hay que cambiar grado no es el bueno 
+    while True:
+        grado = val_num()
+        if len(puntos) -1 < grado :
+            print("se requieren "+ grado + "+1 puntos.\n Ingrese otro Grado\>")
+        else:
+            break
+    con=1
+    tabla=[]
+    auxiliar=[]
+    for i in range(0,len(punto)-1):
+        val=(punto[i+1][1]-punto[i][1])/(punto[i+1][0]-punto[i][0])
+        auxiliar.append(val)
+    tabla.append(auxiliar)
+    auxiliar=[]
+    con+=1
+    for i in range(len(punto)-1,1,-1):
+        for j in range(0,(i-1)):
+            val=(tabla[con-2][j+1]-tabla[con-2][j])/(punto[j+con][0]-punto[j][0])
+            auxiliar.append(val)
+            #print(tabla[j-1][con-2])
+        tabla.append(auxiliar)
+        auxiliar=[]
+        con+=1
+    print(tabla)
+
 
 def agregar_puntos(repeticiones):
     for i in range(1,repeticiones):
@@ -87,19 +108,15 @@ def ordenamiento(punto):
     derecha = []
     centro = []
     if len(punto) > 1:
-        pivote = puntos[0][0]
-        for i in puntos:
+        pivote = punto[0][0]
+        for i in punto:
             if i[0] < pivote:
-                izquierda.append(i[0])
+                izquierda.append(i)
             elif i[0] == pivote:
-                centro.append(i[0])
-            elif i > pivote:
-                derecha.append(i[0])
-<<<<<<< HEAD
-            return ordenamiento(izquierda) + centro + ordenamiento(derecha)
+                centro.append(i)
+            elif i[0] > pivote:
+                derecha.append(i)
+        return ordenamiento(izquierda) + centro + ordenamiento(derecha)
     else:
-        return punto
-=======
-            #Este es un comentario
->>>>>>> 60c83bf1b7cbfb183f1d6b52589ba3f6fdd3ef78
+        return puntos
 fun_tabla()
