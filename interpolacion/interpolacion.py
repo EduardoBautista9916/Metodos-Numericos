@@ -1,5 +1,5 @@
 import os
-from impresion import imprimirDatos, imprimirTabla
+from impresion import imprimirDatos, imprimirTabla, formatNum
 from barras import *
 
 puntos = []
@@ -17,9 +17,9 @@ def menu_interpolacion():
             punto = ordenamiento(puntos)
             imprimirDatos(punto)
             fun_interpolacion(punto)
+            os.system("cls")
         def ajuste_curvas():
-            print("opcion fuera de servio")
-            return False
+            print("opcion fuera de servicio")
         dict = {
             1 : interpolacion,
             2 : ajuste_curvas
@@ -42,13 +42,13 @@ def val_num():
 # funcion que obtiene los datos de la tabla  
 def fun_tabla():
     while True :
-        print("da el valorpara x \n>", end="")
+        print("da el valorpara x")
         x = val_num()
-        print("da el para y \n>", end="")
+        print("da el para y")
         y = val_num()
         cordenadas= [x,y]
         puntos.append(cordenadas)
-        print("digita '0' si desea continuar con los puntos ya ingresados si no digite cualquier otro numerto \n>", end="")
+        print("digita '0' si desea continuar con los puntos ya ingresados si no digite cualquier otro numero ")
         aux = val_num()
         if aux == 0:
             break
@@ -86,7 +86,7 @@ def fun_interpolacion(punto):
     while True:
         grado = val_num()
         if len(puntos) -1 < grado :
-            print("se requieren ",grado , "+1 puntos.\n Ingrese otro Grado\>")
+            print("se requieren ",grado+1 , " puntos.\n Ingrese otro Grado")
         else:
             break
     os.system("cls")
@@ -99,7 +99,10 @@ def fun_interpolacion(punto):
         for j in range(0,i+1):
             aux *= (num_inter - punto[j][0])
         resultado += aux
-    print (resultado)
+    print("P",grado,"(",num_inter,")=",end="")
+    formatNum(resultado)
+    sl(1)
+    os.system("pause")
 
 #Genera la tabla de diferencias divididas
 def diferencias(punto):
