@@ -1,10 +1,12 @@
 import os
 from barras import*
+from interpolacion import menu_interpolacion
 
 def main():
     proceso(0.001)
     bienvenida()
     introduccion()
+    menu_interpolacion()
 
 def bienvenida():
     os.system("cls")

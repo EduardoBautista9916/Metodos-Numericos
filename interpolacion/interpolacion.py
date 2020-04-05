@@ -1,7 +1,34 @@
+import os
+from impresion import imprimirDatos
+from barras import *
+
 puntos = []
 
-def inicio():
+def menu_interpolacion():
+    print("Para comenzar debes de ingresar los valores de la Tabla")
     fun_tabla()
+    while True:
+        menu()
+        option = val_num()
+        if  option != 1 and option != 2:
+            print("opcion no valida")
+        def interpolacion():
+            os.system("cls")
+            punto = ordenamiento(puntos)
+            imprimirDatos(punto)
+            fun_interpolacion(punto)
+        def ajuste_curvas():
+            print("opcion fuera de servio")
+            return False
+        dict = {
+            1 : interpolacion,
+            2 : ajuste_curvas
+        }
+        dict.get(option,menu_interpolacion)()
+        print("¿Desea Realizar Algo más?(Si es así escriba si)")
+        op= input(">")
+        if(op!="si"):
+            break
 
 # funcion que valida que sea un numero la entrada
 def val_num():
@@ -11,45 +38,26 @@ def val_num():
         print("VALOR NO VALIDO")
         digit=val_num()
     return digit
-# aqui se selecciona la opcion a realizar
-def menu_interpolacion():
-    print("digita 1 para usar interpolacion")
-    print("digita 2 para usar ajuste de curvas")
-    option = val_num()
-    if  option != 1 and option != 2:
-        print("opcion no valida")
-    def interpolacion():
-        punto = ordenamiento(puntos)
-        print(punto)
-        fun_interpolacion(punto)
-    def ajuste_curvas():
-        print("opcion fuera de servio")
-        menu_interpolacion()
-    dict = {
-        1 : interpolacion,
-        2 : ajuste_curvas
-    }
-    dict.get(option,menu_interpolacion)()
-    
+
 # funcion que obtiene los datos de la tabla  
 def fun_tabla():
     while True :
-        print("da el valorpara x")
+        print("da el valorpara x \n>", end="")
         x = val_num()
-        print("da el para y")
+        print("da el para y \n>", end="")
         y = val_num()
         cordenadas= [x,y]
         puntos.append(cordenadas)
-        print("digita '0' si desea continuar con los puntos ya ingresados si no digite cualquier otro numrto")
+        print("digita '0' si desea continuar con los puntos ya ingresados si no digite cualquier otro numerto \n>", end="")
         aux = val_num()
         if aux == 0:
             break
-    print(puntos)
+    os.system("cls")
+    imprimirDatos(puntos)
     print("digita '1'si hay que corregir algun punto, si no, digita cualquier otro numero")
     correcto = val_num()
     if correcto == 1:
         correccion()
-    menu_interpolacion()
 
 # corrige algun punto mal capturado    
 def correccion():
@@ -81,6 +89,7 @@ def fun_interpolacion(punto):
             print("se requieren ",grado , "+1 puntos.\n Ingrese otro Grado\>")
         else:
             break
+    os.system("cls")
     tabla=diferencias(punto)
     for i in tabla:
         print(i)
@@ -141,3 +150,29 @@ def ordenamiento(punto):
         return ordenamiento(izquierda) + centro + ordenamiento(derecha)
     else:
         return punto
+
+def menu():
+    os.system("cls")
+    barra(100)
+    sl(1)
+    barra(48)
+    print("MENÚ", end="")
+    barra(48)
+    sl(1)
+    barra(2)
+    espacios(2)
+    print("1.- Interpolacion", end="")
+    espacios(79)
+    barra(2)
+    sl(1)
+    barra(2)
+    espacios(2)
+    print("2.- Ajuste de Curvas", end="")
+    espacios(76)
+    barra(2)
+    sl(1)
+    barra(100)
+    sl(1)
+    barra(100)
+    sl(1)
+    print("Elige una de las dos opciones")
