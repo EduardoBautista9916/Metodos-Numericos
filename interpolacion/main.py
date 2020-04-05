@@ -3,7 +3,7 @@ from barras import*
 from interpolacion import menu_interpolacion
 
 def main():
-    proceso(0.001)
+    proceso(0.005)
     bienvenida()
     introduccion()
     menu_interpolacion()

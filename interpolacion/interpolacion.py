@@ -25,9 +25,10 @@ def menu_interpolacion():
             2 : ajuste_curvas
         }
         dict.get(option,menu_interpolacion)()
-        print("¿Desea Realizar Algo más?(Si es así escriba si)")
+        print("¿Desea Realizar Algo más?(Si es así escriba yes)")
         op= input(">")
-        if(op!="si"):
+        print(op)
+        if(op.lower()!='yes'):
             break
 
 # funcion que valida que sea un numero la entrada
