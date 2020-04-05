@@ -1,5 +1,5 @@
 import os
-from impresion import imprimirDatos
+from impresion import imprimirDatos, imprimirTabla
 from barras import *
 
 puntos = []
@@ -91,17 +91,14 @@ def fun_interpolacion(punto):
             break
     os.system("cls")
     tabla=diferencias(punto)
-    for i in tabla:
-        print(i)
+    imprimirTabla(punto,tabla)
     resultado = punto [0][1]
     
     for i in range(0,int(grado)):
         aux = tabla[i][0]
         for j in range(0,i+1):
             aux *= (num_inter - punto[j][0])
-            print(aux)
         resultado += aux
-        #print(resultado)
     print (resultado)
 
 #Genera la tabla de diferencias divididas
@@ -162,13 +159,13 @@ def menu():
     barra(2)
     espacios(2)
     print("1.- Interpolacion", end="")
-    espacios(79)
+    espacios(77)
     barra(2)
     sl(1)
     barra(2)
     espacios(2)
     print("2.- Ajuste de Curvas", end="")
-    espacios(76)
+    espacios(74)
     barra(2)
     sl(1)
     barra(100)

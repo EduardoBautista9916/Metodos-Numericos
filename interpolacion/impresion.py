@@ -176,7 +176,3 @@ def formatN(val):
             espacios(2)
             parar = True
     
-
-dat = [[-3,1],[3,3],[5,5],[8,2]]
-tad = [[0.333333,1,-1],[0.833333,-0.4],[-0.043939]]
-imprimirTabla(dat,tad)
