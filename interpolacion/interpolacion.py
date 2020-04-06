@@ -5,6 +5,7 @@ from barras import *
 puntos = []
 
 def menu_interpolacion():
+    os.system("cls")
     print("Para comenzar debes de ingresar los valores de la Tabla")
     fun_tabla()
     while True:
@@ -27,7 +28,6 @@ def menu_interpolacion():
         dict.get(option,menu_interpolacion)()
         print("¿Desea Realizar Algo más?(Si es así escriba yes)")
         op= input(">")
-        print(op)
         if(op.lower()!='yes'):
             break
 
@@ -100,7 +100,11 @@ def fun_interpolacion(punto):
         for j in range(0,i+1):
             aux *= (num_inter - punto[j][0])
         resultado += aux
-    print("P",grado,"(",num_inter,")=",end="")
+    print("P",end="")
+    print(int(grado),end="")
+    print("(",end="")
+    print(num_inter,end="")
+    print(")=",end="")
     formatNum(resultado)
     sl(1)
     os.system("pause")
