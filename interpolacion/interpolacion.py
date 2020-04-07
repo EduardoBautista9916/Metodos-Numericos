@@ -34,6 +34,7 @@ def menu_interpolacion():
             print("*"*47 + "GRACIAS"+ "*"*46)
             print("*"*100)
             break
+            break
         else:
             while True:
                 menu_rep()
@@ -43,7 +44,7 @@ def menu_interpolacion():
                     print("opcion no valida")
                 else:
                     break
-            if(rep_tabla == 1):
+            if(rep_tabla == 2):
                 puntos.clear()
                 os.system("cls")
                 fun_tabla()
@@ -272,13 +273,13 @@ def menu_rep():
     sl(1)
     barra(2)
     espacios(2)
-    print("Digita 1.- para continuar con la misma tabla",end="")
+    print("Digita 1.- Para continuar con la misma tabla",end="")
     espacios(50)
     barra(2)
     sl(1)
     barra(2)
     espacios(2)
-    print("Digita 2.-para cambiar la tabla",end="")
+    print("Digita 2.- Para cambiar la tabla",end="")
     espacios(65)
     barra(2)
     sl(1)
