@@ -175,4 +175,3 @@ def formatN(val):
             print("ƒ[###]",end="")
             espacios(2)
             parar = True
-    

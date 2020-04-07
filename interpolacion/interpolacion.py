@@ -1,3 +1,4 @@
+import time
 import os
 from impresion import imprimirDatos, imprimirTabla, formatNum
 from barras import *
@@ -13,6 +14,7 @@ def menu_interpolacion():
         option = val_num()
         if  option != 1 and option != 2:
             print("opcion no valida")
+            menu_interpolacion()
         def interpolacion():
             os.system("cls")
             punto = ordenamiento(puntos)
@@ -29,6 +31,10 @@ def menu_interpolacion():
         print("¿Desea Realizar Algo más?(Si es así escriba yes)")
         op= input(">")
         if(op.lower()!='yes'):
+            print("*"*70)
+            print("*"*10 + " "*20 + "HASTA LA PROXIMA"+ " "*20 + "*"*10)
+            print("")
+            print("*"*15 + " "*15 + "    GRACIAS"+ " "*15 + "*"*15)
             break
 
 # funcion que valida que sea un numero la entrada
@@ -68,7 +74,9 @@ def correccion():
     puntos[col_corregir - 1][0] = val_num()
     print(f"de la columna col_corregir para y")
     puntos[col_corregir - 1][1] = val_num()
-    print("la nueva lista es ",puntos)
+    os.system("cls")
+    print("la nueva lista es: ")
+    imprimirDatos(puntos)
     print("si desea corregir otro dato digite '1', si no, digite culaquier otro numero")
     repetir = val_num()
     if repetir == 1:
@@ -88,6 +96,7 @@ def fun_interpolacion(punto):
         grado = val_num()
         if len(puntos) -1 < grado :
             print("se requieren ",grado+1 , " puntos.\n Ingrese otro Grado")
+            print("NOTA: grado maximo posibles es:" , len(puntos)-1 )
         else:
             break
     os.system("cls")
@@ -115,14 +124,23 @@ def diferencias(punto):
     tabla=[]
     auxiliar=[]
     for i in range(0,len(punto)-1):
-        val=(punto[i+1][1]-punto[i][1])/(punto[i+1][0]-punto[i][0])
+        try:
+            val=(punto[i+1][1]-punto[i][1])/(punto[i+1][0]-punto[i][0])
+        except(ZeroDivisionError):
+            print("error divicion entre cero")
+            time.sleep(2)
+            val = 0 
         auxiliar.append(val)
     tabla.append(auxiliar)
     auxiliar=[]
     con+=1
     for i in range(len(punto)-1,1,-1):
         for j in range(0,(i-1)):
-            val=(tabla[con-2][j+1]-tabla[con-2][j])/(punto[j+con][0]-punto[j][0])
+            try:
+                val=(tabla[con-2][j+1]-tabla[con-2][j])/(punto[j+con][0]-punto[j][0])
+            except:
+                print("error divicion entre cero")
+                time.sleep(2)
             auxiliar.append(val)
         tabla.append(auxiliar)
         auxiliar=[]
