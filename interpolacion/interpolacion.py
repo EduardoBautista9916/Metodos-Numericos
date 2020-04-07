@@ -34,7 +34,6 @@ def menu_interpolacion():
             print("*"*47 + "GRACIAS"+ "*"*46)
             print("*"*100)
             break
-            break
         else:
             while True:
                 menu_rep()
