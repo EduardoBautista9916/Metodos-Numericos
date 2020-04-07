@@ -37,11 +37,12 @@ def menu_interpolacion():
             break
             break
         else:
-            print("digita 3.- para continuar con la misma tabla")
-            print("digita 4.-para cambiar la tabla")
             while True:
+                print("digita 3.- para continuar con la misma tabla")
+                print("digita 4.-para cambiar la tabla")
                 rep_tabla = int(val_num())
                 if rep_tabla != 3 and rep_tabla != 4:
+                    os.system("cls")
                     print("opcion no valida")
                 else:
                     break
