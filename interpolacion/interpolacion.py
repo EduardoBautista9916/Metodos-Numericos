@@ -50,7 +50,6 @@ def menu_interpolacion():
                 os.system("cls")
                 fun_tabla()
                 break
-            
 
 # funcion que valida que sea un numero la entrada
 def val_num():
