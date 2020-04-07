@@ -6,7 +6,6 @@ def main():
     proceso(0.005)
     bienvenida()
     introduccion()
-    #menu_interpolacion()
     fun_tabla()
 
 def bienvenida():

@@ -8,7 +8,6 @@ puntos = []
 def menu_interpolacion():
     os.system("cls")
     print("Para comenzar debes de ingresar los valores de la Tabla")
-    #fun_tabla()
     while True:
         menu()
         option = val_num()
