@@ -43,7 +43,7 @@ def menu_interpolacion():
                     print("opcion no valida")
                 else:
                     break
-            if(rep_tabla == 4):
+            if(rep_tabla == 1):
                 puntos.clear()
                 os.system("cls")
                 fun_tabla()
