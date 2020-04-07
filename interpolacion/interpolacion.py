@@ -8,13 +8,12 @@ puntos = []
 def menu_interpolacion():
     os.system("cls")
     print("Para comenzar debes de ingresar los valores de la Tabla")
-    fun_tabla()
+    #fun_tabla()
     while True:
         menu()
         option = val_num()
         if  option != 1 and option != 2:
             print("opcion no valida")
-            menu_interpolacion()
         def interpolacion():
             os.system("cls")
             punto = ordenamiento(puntos)
@@ -36,6 +35,22 @@ def menu_interpolacion():
             print("")
             print("*"*15 + " "*15 + "    GRACIAS"+ " "*15 + "*"*15)
             break
+            break
+        else:
+            print("digita 3.- para continuar con la misma tabla")
+            print("digita 4.-para cambiar la tabla")
+            while True:
+                rep_tabla = int(val_num())
+                if rep_tabla != 3 and rep_tabla != 4:
+                    print("opcion no valida")
+                else:
+                    break
+            if(rep_tabla == 4):
+                puntos.clear()
+                os.system("cls")
+                fun_tabla()
+                break
+            
 
 # funcion que valida que sea un numero la entrada
 def val_num():
@@ -65,6 +80,7 @@ def fun_tabla():
     correcto = val_num()
     if correcto == 1:
         correccion()
+    menu_interpolacion()
 
 # corrige algun punto mal capturado    
 def correccion():
