@@ -9,5 +9,5 @@ def spline_cubico(punto):
         fi.append((punto[i+1][1]-punto[i][1])/h[i])
         if i >0:
             gi.append((fi[i]-fi[i-1])*6)
-        matriz.append()
+            
     print (h, fi , gi)
