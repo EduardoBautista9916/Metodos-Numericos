@@ -2,6 +2,7 @@ import time
 import os
 from impresion import imprimirDatos, imprimirTabla, formatNum
 from barras import *
+from spline import *
 
 puntos = []
 
@@ -19,7 +20,11 @@ def menu_interpolacion():
             fun_interpolacion(punto)
             os.system("cls")
         def ajuste_curvas():
-            print("opcion fuera de servicio")
+            if len(puntos) < 3:
+                print("puntos insuficientes")
+            else:
+                punto = ordenamiento(puntos)
+                spline_cubico(punto)
         dict = {
             1 : interpolacion,
             2 : ajuste_curvas
