@@ -5,6 +5,7 @@ def spline_cubico(punto):
     fi = []
     si = [0]
     gi = []
+    g = []
     ai=[]
     bi=[]
     ci=[]
