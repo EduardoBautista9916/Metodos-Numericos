@@ -1,4 +1,6 @@
+import os
 from numpy import array, linalg
+from impresion import imprimirTabla2,imprimirTabla3,imprimirTabla4
 
 def spline_cubico(punto):
     h =[]
@@ -15,6 +17,10 @@ def spline_cubico(punto):
         fi.append((punto[i+1][1]-punto[i][1])/h[i])
         if i >0:
             gi.append((fi[i]-fi[i-1])*6)
+    os.system("cls")
+    print("La Tabla de Diferencias de Puntos x y las Derivadas de f(x)")
+    imprimirTabla2(punto,h,fi)
+    os.system("pause")
     centinela = 1
     aux = centinela
     for i in range(0,len(punto)-2):
@@ -32,7 +38,7 @@ def spline_cubico(punto):
         matriz.append(arrayAux)
         aux-=1
         centinela=aux
-    
+    os.system("cls")
     matCuad = array(matriz)
     matRes = array(gi)
     matVal = linalg.solve(matCuad,matRes)
@@ -40,10 +46,16 @@ def spline_cubico(punto):
         si.append(i)
     si.append(0)
     
+    print("La Tabla de Valores de con los valores de S")
+    imprimirTabla3(punto,h,fi,si)
+    os.system("pause")
+
     for i in range(0,len(punto)-1):
         ai.append((si[i+1]-si[i])/(6*h[i]))
         bi.append(si[i]/2)
         ci.append(((punto[i+1][1]-punto[i][1])/h[i])-(((si[i+1]+(2*si[i]))/6)*h[i]))
-
-puntos = [[0.95,-1.1],[1.73,0.27],[2.23,-0.29],[2.77,0.56],[2.99,1.0]]
-spline_cubico(puntos)
+    
+    os.system("cls")
+    print("La Tabla de Valores de con los valores de S")
+    imprimirTabla4(punto,si,ai,bi,ci)
+    os.system("pause")
