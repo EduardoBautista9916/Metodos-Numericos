@@ -46,7 +46,7 @@ def spline_cubico(punto):
         si.append(i)
     si.append(0)
     
-    print("La Tabla de Valores de con los valores de S")
+    print("La Tabla de Valores con los valores de S")
     imprimirTabla3(punto,h,fi,si)
     os.system("pause")
 
@@ -56,6 +56,6 @@ def spline_cubico(punto):
         ci.append(((punto[i+1][1]-punto[i][1])/h[i])-(((si[i+1]+(2*si[i]))/6)*h[i]))
     
     os.system("cls")
-    print("La Tabla de Valores de con los valores de S")
+    print("La Tabla de Valores con los coeficientes a, b, c, y d")
     imprimirTabla4(punto,si,ai,bi,ci)
     os.system("pause")

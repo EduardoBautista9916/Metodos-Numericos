@@ -30,6 +30,7 @@ def menu_interpolacion():
             2 : ajuste_curvas
         }
         dict.get(option,menu_interpolacion)()
+        os.system("cls")
         print("¿Desea Realizar Algo más?(Si es así escriba yes)")
         op= input(">")
         if(op.lower()!='yes'):
