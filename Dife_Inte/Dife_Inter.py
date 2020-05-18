@@ -1,9 +1,6 @@
 from recursos.barras import *
 import os
 
-
-puntos = []
-
 def diferenciacion(punto):
     
     pass
@@ -23,14 +20,14 @@ def menuD_I():
     sl(1)
     barra(2)
     espacios(2)
-    print("1.- Diferenciación", end="")
-    espacios(76)
+    print("1.- Diferenciación Numerica", end="")
+    espacios(67)
     barra(2)
     sl(1)
     barra(2)
     espacios(2)
-    print("2.- Integración", end="")
-    espacios(79)
+    print("2.- Integración Numerica", end="")
+    espacios(70)
     barra(2)
     sl(1)
     barra(100)
