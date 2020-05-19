@@ -1,14 +1,25 @@
 from recursos.barras import *
 from recursos.control import *
-import os
+from recursos.impresion import *
+from Dife_Inter import *
+from os import system
 import time
 
+tabla = []
 puntos =[]
 
-def main():
+def main(punto):
+    puntos = punto
     h=0
     bienvenida()
     introduccion()
+    if len(puntos) == 0:
+        print("No hay alguna tabla capturada.")
+        print("Ingrese el tamaño de paso h")
+        h = val_num()
+        puntos = llenarTabla(h)
+        imprimirDatos(puntos)
+        system("pause")
     while True:
         menuD_I()
         opcion = val_num()
@@ -17,19 +28,17 @@ def main():
             time.sleep(1)
         else:
             break
-    if len(puntos) == 0:
-        print("Ingrese el tamaño de paso h")
-        h = val_num()
-        puntos = llenarTabla(h)
     if opcion == 1:
         #Diferenciacion
+        tabla = diferencias(puntos)
+        print(tabla)
         pass
     elif opcion == 2:
         #integracion
         pass
 
 def bienvenida():
-    os.system("cls")
+    system("cls")
     barra(100)
     sl(1)
     barra(45)
@@ -94,11 +103,11 @@ def bienvenida():
     sl(1)
     barra(100)
     sl(1)
-    os.system("pause")
-    os.system("cls")
+    system("pause")
+    system("cls")
 
 def introduccion():
-    os.system("cls")
+    system("cls")
     barra(100)
     sl(1)
     barra(2)
@@ -121,11 +130,11 @@ def introduccion():
     sl(1)
     barra(100)
     sl(1)
-    os.system("pause")
-    os.system("cls")
+    system("pause")
+    system("cls")
 
 def menuD_I():
-    os.system("cls")
+    system("cls")
     barra(100)
     sl(1)
     barra(48)
@@ -152,4 +161,4 @@ def menuD_I():
     sl(1)
     print("Elige una de las dos opciones")
 
-main()
+main([])

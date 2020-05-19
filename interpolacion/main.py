@@ -98,4 +98,45 @@ def introduccion():
     os.system("pause")
     os.system("cls")
 
+def imprimirDatos(punto):
+    esi(1)
+    bh(3)
+    for i in range(0,len(punto)):
+        bsih(1)
+        bh(10)
+    esd(1)
+    sl(1)
+    bv(1)
+    espacios(1)
+    print("x", end="")
+    espacios(1)
+    bv(1)
+    for i in range(0,len(punto)):
+        formatNum(punto[i][0])
+        bv(1)
+    sl(1)
+    biiv(1)
+    bh(3)
+    for i in range(0,len(punto)):
+        bii(1)
+        bh(10)
+    bidv(1)
+    sl(1)
+    bv(1)
+    espacios(1)
+    print("y", end="")
+    espacios(1)
+    bv(1)
+    for i in range(0,len(punto)):
+        formatNum(punto[i][1])
+        bv(1)
+    sl(1)
+    eii(1)
+    bh(3)
+    for i in range(0,len(punto)):
+        biih(1)
+        bh(10)
+    eid(1)
+    sl(1)
+
 main()

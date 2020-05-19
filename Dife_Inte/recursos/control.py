@@ -33,5 +33,3 @@ def llenarTabla(h):
         if opcion == 0:
             break
     return puntos
-
-print(llenarTabla(0.5))
