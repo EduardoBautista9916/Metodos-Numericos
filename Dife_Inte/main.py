@@ -21,6 +21,8 @@ def main(punto):
         puntos = llenarTabla(h)
         imprimirDatos(puntos)
         system("pause")
+    else:
+        h=(puntos[len(puntos)-1][0]-puntos[0][0])/(len(puntos)-1)
     while True:
         menuD_I()
         opcion = val_num()
@@ -42,8 +44,8 @@ def main(punto):
             interVal=val_inter(intervalo, puntos)
         tabla = diferenciacion(puntos,h,intervalo)
         print(tabla)
-        pass
     elif opcion == 2:
+        integracion(puntos,h)
         #integracion
         pass
 
@@ -171,4 +173,8 @@ def menuD_I():
     sl(1)
     print("Elige una de las dos opciones")
 
-main([[1,1], [2,4], [3,9], [4, 16], [5,25], [6,36]])
+main([[1,1], [2,4], [3,9], [4,16], [5,25], [6,36], [7,49]])
+#        0      1      2      3       4       5      6
+"""punto=[[1,1], [2,4], [3,9], [4,16], [5,25], [6,36]]
+for i in range(1, len(punto)-2, 2):
+    print(i)"""

@@ -20,8 +20,30 @@ def diferenciacion(punto, h, intervalo):
     tabla.append(aux)
     return tabla
 
-def integracion():
-    pass
+def integracion(punto, h):
+    integral = 0
+    integral2 = 0
+    if((len(punto) % 2)==0):
+        integral=punto[0][1]+punto[len(punto)-1][1]
+        for i in range(1, len(punto)-2, 2):
+            integral += (2*punto[i][1]) + (4*punto[i+1][1])
+        integral = (integral*h)/3
+        print(integral)
+    else:
+        integral=punto[0][1]+punto[len(punto)-4][1]
+        for i in range(1, len(punto)-5, 2):
+            integral += (2*punto[i][1]) + (4*punto[i+1][1])
+        integral = (integral*h)/3
+        integral2=punto[len(punto)-4][1]+punto[len(punto)-1][1]
+        for i in range(len(punto)-3, len(punto)-1):
+            integral2 += (3*punto[i][1])
+        integral2 = (3*h*integral2)/8
+
+        print(integral)
+        print(integral2)
+        integral+=integral2
+        print(integral)
+    return integral
 
 def diferencias(punto):
     con=1
