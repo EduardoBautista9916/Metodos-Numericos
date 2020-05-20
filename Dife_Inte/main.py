@@ -11,6 +11,7 @@ puntos =[]
 def main(punto):
     puntos = punto
     h=0
+    intervalo = []
     bienvenida()
     introduccion()
     if len(puntos) == 0:
@@ -30,7 +31,16 @@ def main(punto):
             break
     if opcion == 1:
         #Diferenciacion
-        tabla = diferencias(puntos)
+        interVal = False
+        while (not interVal):
+            intervalo.clear()
+            print("Ingresa el intervalo de valores a los cuales desea sacar la Derivada:")
+            print("Desde:")
+            intervalo.append(val_num())
+            print("Hasta:")
+            intervalo.append(val_num())
+            interVal=val_inter(intervalo, puntos)
+        tabla = diferenciacion(puntos,h,intervalo)
         print(tabla)
         pass
     elif opcion == 2:
@@ -161,4 +171,4 @@ def menuD_I():
     sl(1)
     print("Elige una de las dos opciones")
 
-main([])
+main([[1,1], [2,4], [3,9], [4, 16], [5,25], [6,36]])

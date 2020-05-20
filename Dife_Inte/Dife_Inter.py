@@ -1,9 +1,24 @@
 from recursos.barras import *
 import os
 
-def diferenciacion(punto, tabla):
-    
-    pass
+def diferenciacion(punto, h, intervalo):
+    tabla = []
+    aux=[]
+    inicio = int(((intervalo[0]-punto[0][0])/h)-1)
+    inter = int(((intervalo[1]-intervalo[0])/h)+1)
+    for i in range(inicio,inter):
+        aux.append((1/2*h)*(punto[i+2][1]-punto[i][1]))
+        print(aux)
+    tabla.append(aux)
+    print(tabla)
+    aux=[]
+    print()
+    for i in range(0,len(tabla[0])-2):
+        print(i)
+        aux.append((1/2*h)*(tabla[0][i+2]-tabla[0][i]))
+        print(aux)
+    tabla.append(aux)
+    return tabla
 
 def integracion():
     pass
