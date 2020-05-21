@@ -1,22 +1,17 @@
-from recursos.barras import *
+from barras import *
 import os
 
 def diferenciacion(punto, h, intervalo):
     tabla = []
     aux=[]
-    inicio = int(((intervalo[0]-punto[0][0])/h)-1)
-    inter = int(((intervalo[1]-intervalo[0])/h)+1)
+    inicio = int(((intervalo[0]/h)-2))
+    inter = int(((intervalo[1])/h)-1)
     for i in range(inicio,inter):
         aux.append((1/2*h)*(punto[i+2][1]-punto[i][1]))
-        print(aux)
     tabla.append(aux)
-    print(tabla)
     aux=[]
-    print()
     for i in range(0,len(tabla[0])-2):
-        print(i)
         aux.append((1/2*h)*(tabla[0][i+2]-tabla[0][i]))
-        print(aux)
     tabla.append(aux)
     return tabla
 
@@ -24,12 +19,13 @@ def integracion(punto, h):
     integral = 0
     integral2 = 0
     if((len(punto) % 2)==0):
+        print("Como tenemos n subintervalos pares Realizamos Simpson 1/3")
         integral=punto[0][1]+punto[len(punto)-1][1]
         for i in range(1, len(punto)-2, 2):
             integral += (2*punto[i][1]) + (4*punto[i+1][1])
         integral = (integral*h)/3
-        print(integral)
     else:
+        print("Como tenemos n subintervalos impares Realizamos Simpson 1/3 para los n-3 primeros valores y los ultimos 4 Realizaremos Simpson 3/8")
         integral=punto[0][1]+punto[len(punto)-4][1]
         for i in range(1, len(punto)-5, 2):
             integral += (2*punto[i][1]) + (4*punto[i+1][1])
@@ -38,11 +34,7 @@ def integracion(punto, h):
         for i in range(len(punto)-3, len(punto)-1):
             integral2 += (3*punto[i][1])
         integral2 = (3*h*integral2)/8
-
-        print(integral)
-        print(integral2)
         integral+=integral2
-        print(integral)
     return integral
 
 def diferencias(punto):

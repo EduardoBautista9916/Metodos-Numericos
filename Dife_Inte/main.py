@@ -1,6 +1,6 @@
-from recursos.barras import *
-from recursos.control import *
-from recursos.impresion import *
+from barras import *
+from control import *
+from impresion import *
 from Dife_Inter import *
 from os import system
 import time
@@ -12,42 +12,74 @@ def main(punto):
     puntos = punto
     h=0
     intervalo = []
+    integral = 0
+    repetir=True
     bienvenida()
     introduccion()
-    if len(puntos) == 0:
-        print("No hay alguna tabla capturada.")
-        print("Ingrese el tamaño de paso h")
-        h = val_num()
-        puntos = llenarTabla(h)
-        imprimirDatos(puntos)
-        system("pause")
-    else:
-        h=(puntos[len(puntos)-1][0]-puntos[0][0])/(len(puntos)-1)
-    while True:
-        menuD_I()
-        opcion = val_num()
-        if opcion != 1 and opcion != 2:
-            print("opcion Invalida")
-            time.sleep(1)
+    while(repetir):
+        if len(puntos) == 0:
+            print("No hay alguna tabla capturada.")
+            print("Ingrese el tamaño de paso h")
+            h = val_num()
+            puntos = llenarTabla(h)
+            imprimirDatos(puntos)
+            system("pause")
         else:
-            break
-    if opcion == 1:
-        #Diferenciacion
-        interVal = False
-        while (not interVal):
-            intervalo.clear()
-            print("Ingresa el intervalo de valores a los cuales desea sacar la Derivada:")
-            print("Desde:")
-            intervalo.append(val_num())
-            print("Hasta:")
-            intervalo.append(val_num())
-            interVal=val_inter(intervalo, puntos)
-        tabla = diferenciacion(puntos,h,intervalo)
-        print(tabla)
-    elif opcion == 2:
-        integracion(puntos,h)
-        #integracion
-        pass
+            h=(puntos[len(puntos)-1][0]-puntos[0][0])/(len(puntos)-1)
+        while True:
+            menuD_I()
+            opcion = val_num()
+            if opcion != 1 and opcion != 2:
+                print("opcion Invalida")
+                time.sleep(1)
+            else:
+                break
+        if opcion == 1:
+            #Diferenciacion
+            interVal = False
+            while (not interVal):
+                intervalo.clear()
+                system("cls")
+                print("Ingresa el intervalo de valores a los cuales desea sacar la Derivada:")
+                print("Desde:")
+                intervalo.append(val_num())
+                print("Hasta:")
+                intervalo.append(val_num())
+                interVal=val_inter(intervalo, puntos)
+            tabla = diferenciacion(puntos,h,intervalo)
+            system("cls")
+            imprimirDer(puntos, tabla, intervalo,h)
+            system("pause")
+        elif opcion == 2:
+            system("cls")
+            integral = integracion(puntos,h)
+            print("El valor de la intgral numerica es de:", integral)
+            system("pause")
+            #integracion
+        system("cls")
+        print("Desea Realizar otra cosa?\n1.- si\n2.-no")
+        opcion=val_num()
+        if(opcion==1):
+            system("cls")
+            print("Desea cambiar con la misma tabla?\n 1.- si\n2.-no")
+            opcion = val_num()
+            if(opcion==1):
+                puntos=[]
+                repetir=True
+        elif(opcion==2):
+            repetir=False
+        else:
+            print("No entendi tu opcion, pero mejor terminamos hasta aqui...")
+            time.sleep(1)
+            repetir=False
+    os.system("cls")
+    print("      __^__                                      __^__")
+    print("     ( ___ )************************************( ___ )")
+    print("      |   |                                      |   |")
+    print("      |   |           HASTA LA PROXIMA           |   |")
+    print("      |   |                                      |   |")
+    print("     ( ___ )************************************( ___ )")
+    time.sleep(4)
 
 def bienvenida():
     system("cls")
@@ -173,8 +205,4 @@ def menuD_I():
     sl(1)
     print("Elige una de las dos opciones")
 
-main([[1,1], [2,4], [3,9], [4,16], [5,25], [6,36], [7,49]])
-#        0      1      2      3       4       5      6
-"""punto=[[1,1], [2,4], [3,9], [4,16], [5,25], [6,36]]
-for i in range(1, len(punto)-2, 2):
-    print(i)"""
+main([])
