@@ -1,5 +1,5 @@
 import sys
-from barras import *
+from Dife_Inte.barras import *
 
 def imprimirDatos(punto):
     esi(1)

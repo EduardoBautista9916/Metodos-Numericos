@@ -1,20 +1,19 @@
-from barras import *
-from control import *
-from impresion import *
-from Dife_Inter import *
+from Dife_Inte.barras import *
+from Dife_Inte.control import *
+from Dife_Inte.impresion import *
+from Dife_Inte.Dife_Inter import *
 from os import system
 import time
 
 tabla = []
 puntos =[]
 
-def main(punto):
+def mainDif(punto):
     puntos = punto
     h=0
     intervalo = []
     integral = 0
     repetir=True
-    bienvenida()
     introduccion()
     while(repetir):
         if len(puntos) == 0:
@@ -205,4 +204,4 @@ def menuD_I():
     sl(1)
     print("Elige una de las dos opciones")
 
-main([])
+#main([])

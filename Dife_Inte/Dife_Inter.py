@@ -1,4 +1,4 @@
-from barras import *
+from Dife_Inte.barras import *
 import os
 
 def diferenciacion(punto, h, intervalo):

@@ -1,4 +1,4 @@
-from barras import *
+from interpolacion.barras import *
 parar = False
 
 def imprimirDatos(punto):

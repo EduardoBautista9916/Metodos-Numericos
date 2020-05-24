@@ -1,6 +1,6 @@
 import os
 from numpy import array, linalg
-from impresion import imprimirTabla2,imprimirTabla3,imprimirTabla4
+from interpolacion.impresion import imprimirTabla2,imprimirTabla3,imprimirTabla4
 
 def spline_cubico(punto):
     h =[]

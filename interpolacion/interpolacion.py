@@ -1,18 +1,21 @@
 import time
 import os
-from impresion import imprimirDatos, imprimirTabla, formatNum
-from barras import *
-from spline import *
+from interpolacion.impresion import imprimirDatos, imprimirTabla, formatNum
+from interpolacion.barras import *
+from interpolacion.spline import *
 
 puntos = []
 
-def menu_interpolacion():
+def menu_interpolacion(punto):
+    puntos = punto
     os.system("cls")
     while True:
         menu()
         option = val_num()
         if  option != 1 and option != 2:
             print("opcion no valida")
+        def capturar():
+            fun_tabla()
         def interpolacion():
             os.system("cls")
             punto = ordenamiento(puntos)
@@ -26,8 +29,9 @@ def menu_interpolacion():
                 punto = ordenamiento(puntos)
                 spline_cubico(punto)
         dict = {
-            1 : interpolacion,
-            2 : ajuste_curvas
+            1 : capturar,
+            2 : interpolacion,
+            3 : ajuste_curvas
         }
         dict.get(option,menu_interpolacion)()
         os.system("cls")
@@ -54,6 +58,7 @@ def menu_interpolacion():
                 os.system("cls")
                 fun_tabla()
                 break
+    return punto
 
 # funcion que valida que sea un numero la entrada
 def val_num():
@@ -115,7 +120,6 @@ def fun_tabla():
     correcto = val_num()
     if correcto == 1:
         correccion()
-    menu_interpolacion()
 
 # corrige algun punto mal capturado    
 def correccion():
@@ -257,13 +261,19 @@ def menu():
     sl(1)
     barra(2)
     espacios(2)
-    print("1.- Interpolacion", end="")
+    print("1.- Capturar Tabla", end="")
     espacios(77)
     barra(2)
     sl(1)
     barra(2)
     espacios(2)
-    print("2.- Ajuste de Curvas", end="")
+    print("2.- Interpolacion", end="")
+    espacios(77)
+    barra(2)
+    sl(1)
+    barra(2)
+    espacios(2)
+    print("3.- Ajuste de Curvas", end="")
     espacios(74)
     barra(2)
     sl(1)
@@ -271,7 +281,7 @@ def menu():
     sl(1)
     barra(100)
     sl(1)
-    print("Elige una de las dos opciones")
+    print("Elige una de las tres opciones")
 
 def menu_rep():
     barra(100)
