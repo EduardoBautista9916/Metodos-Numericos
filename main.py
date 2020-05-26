@@ -42,7 +42,28 @@ def menuPrincipal(puntos):
             print("Esa opcion no esta disponible")
             time.sleep(1)
             repetir=True
+            break
             pass
+        print("Desea realizar otra operacion? (1.-si/2.-no)")
+        opcion=val_num()
+        if(opcion==1):
+            repetir=True
+            pass
+        elif(opcion==2):
+            repetir=False
+            pass
+        else:
+            print("No entiendo esa opcion, asi que mejor terminemos el programa aqui.")
+            repetir = False
+            pass
+    os.system("cls")
+    print("      __^__                                      __^__")
+    print("     ( ___ )************************************( ___ )")
+    print("      |   |                                      |   |")
+    print("      |   |           HASTA LA PROXIMA           |   |")
+    print("      |   |                                      |   |")
+    print("     ( ___ )************************************( ___ )")
+    time.sleep(4)
     pass
 
 def menuInicio():

@@ -351,7 +351,7 @@ def exit():
         print("      |   |           HASTA LA PROXIMA           |   |")
         print("      |   |                                      |   |")
         print("     ( ___ )************************************( ___ )")
-        time.sleep(8)
+        time.sleep(2)
     dict1 = {
         0 : exi,
         1 : rep

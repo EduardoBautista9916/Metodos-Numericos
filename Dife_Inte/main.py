@@ -9,33 +9,43 @@ tabla = []
 puntos =[]
 
 def mainDif(punto):
+    global puntos
+    global tabla
     puntos = punto
+    tabla=[]
     h=0
     intervalo = []
     integral = 0
     repetir=True
     introduccion()
     while(repetir):
-        if len(puntos) == 0:
-            print("No hay alguna tabla capturada.")
+        while True:
+            menuD_I()
+            opcion = val_num()
+            if opcion != 1 and opcion != 2 and opcion !=3:
+                print("opcion Invalida")
+                time.sleep(1)
+            else:
+                break
+        if opcion==1:
             print("Ingrese el tamaño de paso h")
             h = val_num()
             puntos = llenarTabla(h)
             imprimirDatos(puntos)
             system("pause")
-        else:
-            h=(puntos[len(puntos)-1][0]-puntos[0][0])/(len(puntos)-1)
-        while True:
-            menuD_I()
-            opcion = val_num()
-            if opcion != 1 and opcion != 2:
-                print("opcion Invalida")
-                time.sleep(1)
-            else:
-                break
-        if opcion == 1:
+
+        elif opcion == 2:
             #Diferenciacion
             interVal = False
+            if len(puntos) == 0:
+                print("No hay alguna tabla capturada.")
+                print("Ingrese el tamaño de paso h")
+                h = val_num()
+                puntos = llenarTabla(h)
+                imprimirDatos(puntos)
+                system("pause")
+            else:
+                h=(puntos[len(puntos)-1][0]-puntos[0][0])/(len(puntos)-1)
             while (not interVal):
                 intervalo.clear()
                 system("cls")
@@ -45,32 +55,45 @@ def mainDif(punto):
                 print("Hasta:")
                 intervalo.append(val_num())
                 interVal=val_inter(intervalo, puntos)
+            print(puntos)
+            print(tabla)
+            print(intervalo)
             tabla = diferenciacion(puntos,h,intervalo)
             system("cls")
             imprimirDer(puntos, tabla, intervalo,h)
             system("pause")
-        elif opcion == 2:
+        elif opcion == 3:
+            if len(puntos) == 0:
+                print("No hay alguna tabla capturada.")
+                print("Ingrese el tamaño de paso h")
+                h = val_num()
+                puntos = llenarTabla(h)
+                imprimirDatos(puntos)
+                system("pause")
+            else:
+                h=(puntos[len(puntos)-1][0]-puntos[0][0])/(len(puntos)-1)
             system("cls")
             integral = integracion(puntos,h)
             print("El valor de la intgral numerica es de:", integral)
             system("pause")
             #integracion
-        system("cls")
-        print("Desea Realizar otra cosa?\n1.- si\n2.-no")
-        opcion=val_num()
-        if(opcion==1):
+        if opcion != 1:
             system("cls")
-            print("Desea cambiar con la misma tabla?\n 1.- si\n2.-no")
-            opcion = val_num()
+            print("Desea Realizar otra cosa?\n1.- si\n2.-no")
+            opcion=val_num()
             if(opcion==1):
-                puntos=[]
-                repetir=True
-        elif(opcion==2):
-            repetir=False
-        else:
-            print("No entendi tu opcion, pero mejor terminamos hasta aqui...")
-            time.sleep(1)
-            repetir=False
+                system("cls")
+                print("Desea cambiar con la misma tabla?\n 1.- si\n2.-no")
+                opcion = val_num()
+                if(opcion==1):
+                    puntos=[]
+                    repetir=True
+            elif(opcion==2):
+                repetir=False
+            else:
+                print("No entendi tu opcion, pero mejor terminamos hasta aqui...")
+                time.sleep(1)
+                repetir=False
     os.system("cls")
     print("      __^__                                      __^__")
     print("     ( ___ )************************************( ___ )")
@@ -188,13 +211,19 @@ def menuD_I():
     sl(1)
     barra(2)
     espacios(2)
-    print("1.- Diferenciación Numerica", end="")
+    print("1.- Capturar Tabla", end="")
+    espacios(76)
+    barra(2)
+    sl(1)
+    barra(2)
+    espacios(2)
+    print("2.- Diferenciación Numerica", end="")
     espacios(67)
     barra(2)
     sl(1)
     barra(2)
     espacios(2)
-    print("2.- Integración Numerica", end="")
+    print("3.- Integración Numerica", end="")
     espacios(70)
     barra(2)
     sl(1)

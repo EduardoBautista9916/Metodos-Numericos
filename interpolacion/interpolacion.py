@@ -8,56 +8,68 @@ puntos = []
 
 def menu_interpolacion(punto):
     puntos = punto
+    rep=False
+    print(punto)
+    print(puntos)
+    os.system("pause")
     os.system("cls")
     while True:
-        menu()
-        option = val_num()
-        if  option != 1 and option != 2:
-            print("opcion no valida")
-        def capturar():
-            fun_tabla()
-        def interpolacion():
+        while True:
+            menu()
+            option = val_num()
+            if  option != 1 and option != 2 and option!=3:
+                print("opcion no valida")
+                time.sleep(1)
+            else:
+                break
+        if (option==1):
+            puntos=[]
+            puntos=fun_tabla()
+        elif (option==2):
             os.system("cls")
+            if len(puntos)==0:
+                print("No hay ninguna tabla capturada, por favor Capture los datos")
+                time.sleep(2)
+                puntos=fun_tabla()
             punto = ordenamiento(puntos)
             imprimirDatos(punto)
             fun_interpolacion(punto)
             os.system("cls")
-        def ajuste_curvas():
+        elif(option==3):
+            if len(punto)==0:
+                print("No hay ninguna tabla capturada, por favor Capture los datos")
+                puntos=fun_tabla()
+                
             if len(puntos) < 3:
                 print("puntos insuficientes")
             else:
                 punto = ordenamiento(puntos)
                 spline_cubico(punto)
-        dict = {
-            1 : capturar,
-            2 : interpolacion,
-            3 : ajuste_curvas
-        }
-        dict.get(option,menu_interpolacion)()
-        os.system("cls")
-        print("¿Desea Realizar Algo más?(Si es así escriba yes)")
-        op= input(">")
-        if(op.lower()!='yes'):
+        if(option!=1):
             os.system("cls")
-            print("*"*100)
-            print("*"*42 + "HASTA LA PROXIMA"+ "*"*42)
-            print("*"*47 + "GRACIAS"+ "*"*46)
-            print("*"*100)
-            break
-        else:
-            while True:
-                menu_rep()
-                rep_tabla = int(val_num())
-                if rep_tabla != 1 and rep_tabla != 2:
-                    os.system("cls")
-                    print("opcion no valida")
-                else:
-                    break
-            if(rep_tabla == 2):
-                puntos.clear()
+            print("¿Desea Realizar Algo más?(Si es así escriba yes)")
+            op= input(">")
+            if(op.lower()!='yes'):
                 os.system("cls")
-                fun_tabla()
+                print("*"*100)
+                print("*"*42 + "HASTA LA PROXIMA"+ "*"*42)
+                print("*"*47 + "GRACIAS"+ "*"*46)
+                print("*"*100)
                 break
+            else:
+                while True:
+                    menu_rep()
+                    rep_tabla = int(val_num())
+                    if rep_tabla != 1 and rep_tabla != 2:
+                        os.system("cls")
+                        print("opcion no valida")
+                    else:
+                        break
+                if(rep_tabla == 2):
+                    puntos.clear()
+                    os.system("cls")
+                    fun_tabla()
+                    break
     return punto
 
 # funcion que valida que sea un numero la entrada
@@ -71,6 +83,7 @@ def val_num():
 
 # funcion que obtiene los datos de la tabla  
 def fun_tabla():
+    os.system("cls")
     barra(100)
     sl(1)
     barra(2)
@@ -88,6 +101,7 @@ def fun_tabla():
     barra(100)
     sl(1)
     os.system("pause")
+    puntos=[]
     i=1
     while True :
         os.system("cls")
@@ -119,10 +133,11 @@ def fun_tabla():
     print("digita '1'si hay que corregir algún punto, si no, digita cualquier otro numero")
     correcto = val_num()
     if correcto == 1:
-        correccion()
+        puntos=correccion(puntos)
+    return puntos
 
 # corrige algun punto mal capturado    
-def correccion():
+def correccion(puntos):
     os.system("cls")
     while True:
         imprimirDatos(puntos)
@@ -157,7 +172,8 @@ def correccion():
     print("si desea corregir otro dato digite '1', si no, digite culaquier otro número")
     repetir = val_num()
     if repetir == 1:
-        correccion()
+        puntos=correccion(puntos)
+    return puntos
 
 # comienza el metodo de interpolacion por diferencias divididas 
 def fun_interpolacion(punto):
