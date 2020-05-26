@@ -8,7 +8,7 @@ def val_num():
         digit=val_num()
     return digit
 
-def llenarTabla(h):
+def llenarTabla(h, cant):
     puntos = []
     aux=[]
     print("Ingrese el valor inicial de x")
@@ -18,8 +18,7 @@ def llenarTabla(h):
     valy=val_num()
     aux.append(valy)
     puntos.append(aux)
-    i = 0
-    while True:
+    for i in range(0,cant-1):
         system("cls")
         aux=[]
         valx = puntos[i][0] + h
@@ -27,11 +26,6 @@ def llenarTabla(h):
         print("Ingrese el valor de f(", aux[0],")")
         aux.append(val_num())
         puntos.append(aux)
-        i+=1
-        print("Si son puntos suficientes ingrese 0")
-        opcion=val_num()
-        if opcion == 0:
-            break
     return puntos
 
 def val_inter(intervalo, punto):

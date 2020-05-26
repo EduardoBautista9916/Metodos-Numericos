@@ -10,12 +10,11 @@ puntos =[]
 
 def mainDif(punto):
     global puntos
-    global tabla
     puntos = punto
-    tabla=[]
     h=0
     intervalo = []
     integral = 0
+    cant = 0
     repetir=True
     introduccion()
     while(repetir):
@@ -30,7 +29,9 @@ def mainDif(punto):
         if opcion==1:
             print("Ingrese el tamaño de paso h")
             h = val_num()
-            puntos = llenarTabla(h)
+            print("Ingrese cuantos datos quiere")
+            cant = int(val_num())
+            puntos = llenarTabla(h, cant)
             imprimirDatos(puntos)
             system("pause")
 
@@ -41,7 +42,9 @@ def mainDif(punto):
                 print("No hay alguna tabla capturada.")
                 print("Ingrese el tamaño de paso h")
                 h = val_num()
-                puntos = llenarTabla(h)
+                print("Ingrese cuantos datos quiere")
+                cant = int(val_num())
+                puntos = llenarTabla(h, cant)
                 imprimirDatos(puntos)
                 system("pause")
             else:
@@ -56,7 +59,7 @@ def mainDif(punto):
                 intervalo.append(val_num())
                 interVal=val_inter(intervalo, puntos)
             print(puntos)
-            print(tabla)
+            print(h)
             print(intervalo)
             tabla = diferenciacion(puntos,h,intervalo)
             system("cls")
@@ -67,7 +70,9 @@ def mainDif(punto):
                 print("No hay alguna tabla capturada.")
                 print("Ingrese el tamaño de paso h")
                 h = val_num()
-                puntos = llenarTabla(h)
+                print("Ingrese cuantos datos quiere")
+                cant = int(val_num())
+                puntos = llenarTabla(h, cant)
                 imprimirDatos(puntos)
                 system("pause")
             else:
@@ -79,11 +84,11 @@ def mainDif(punto):
             #integracion
         if opcion != 1:
             system("cls")
-            print("Desea Realizar otra cosa?\n1.- si\n2.-no")
+            print("Desea Realizar otra cosa?\n1.-si\n2.-no")
             opcion=val_num()
             if(opcion==1):
                 system("cls")
-                print("Desea cambiar con la misma tabla?\n 1.- si\n2.-no")
+                print("Desea cambiar con la misma tabla?\n 1.-si\n2.-no")
                 opcion = val_num()
                 if(opcion==1):
                     puntos=[]
@@ -102,6 +107,7 @@ def mainDif(punto):
     print("      |   |                                      |   |")
     print("     ( ___ )************************************( ___ )")
     time.sleep(4)
+    return puntos
 
 def bienvenida():
     system("cls")

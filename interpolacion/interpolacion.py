@@ -9,9 +9,6 @@ puntos = []
 def menu_interpolacion(punto):
     puntos = punto
     rep=False
-    print(punto)
-    print(puntos)
-    os.system("pause")
     os.system("cls")
     while True:
         while True:
@@ -180,14 +177,14 @@ def fun_interpolacion(punto):
     while True:
         print("digita el numero a interpolar")
         num_inter = val_num()
-        if num_inter < punto[0][0] or num_inter > punto[len(puntos)-1][0]:
+        if num_inter < punto[0][0] or num_inter > punto[len(punto)-1][0]:
             print("valor a interpolar fuera de rrango")
         else:
             break
     print("digita el grado de el polinomio que se requiere")
     while True:
         grado = val_num()
-        if len(puntos) -1 < grado :
+        if len(punto) -1 < grado :
             print("se requieren ",grado+1 , " puntos.\n Ingrese otro Grado")
             print("NOTA: grado maximo posibles es:" , len(puntos)-1 )
         else:
